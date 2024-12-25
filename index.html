@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+
+        .page1{
+            background-color: rgb(24, 24, 66);
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .one{
+            position: relative;
+          
+            min-height: 80vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .page1 h1{
+            font-size: 3.5rem;
+            font-weight: bold;
+            
+            background: linear-gradient(to right, rgb(89, 89, 228),rgb(144, 144, 230),rgb(237, 91, 203),rgb(251, 153, 153));
+            -webkit-background-clip: text;
+            background-clip: text; 
+            color: transparent;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            
+        }
+        .imga{
+            height: 40vh;
+            width: 40%;
+        }
+
+        .imga img{
+            height: 100%;
+            width: 100%;
+            rotate: 25deg;
+            filter: drop-shadow(2px 2px 20px rgb(133, 12, 247));
+            transition: transform 0.3s ease-in-out;
+
+            animation-name: change;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes change {
+            0%{
+                filter: drop-shadow(2px 2px 20px rgb(133, 12, 247));
+                rotate: 0;
+            }
+            50%{
+                filter: drop-shadow(2px 2px 20px rgb(235, 27, 200));
+                rotate: 20deg;
+            }
+            100%{
+                filter: drop-shadow(2px 2px 20px rgb(133, 12, 247));
+                rotate: 0;
+            }
+        }
+
+        .imga img:hover{
+            transform:
+            scale(1.1);
+        }
+
+        
+
+        .b{
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px;
+
+            height: 200px;
+            width :200px;
+            
+        }
+        @keyframes anime {
+            0%{
+                rotate: 0deg;
+            }
+            50%{
+                rotate: 45deg;
+            }
+            100%{
+                rotate:0deg;
+            }
+        }
+
+        .c{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 5px;
+
+            height: 200px;
+            width :200px;
+            rotate:270deg;
+          
+        }
+
+        @keyframes aanime {
+            0%{
+                rotate: 270deg;
+            }
+            50%{
+                rotate: 315deg;
+            }
+            100%{
+                rotate:270deg;
+            }
+        }
+
+        .d{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 5px;
+
+            height: 150px;
+            width :200px
+        }
+
+        .e{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 5px;
+
+            height: 200px;
+            width :200px;
+            
+        }
+
+
+        .btn{
+            height: 50px;
+            width: 200px;
+            border-radius: 1rem;
+            background-color: rgb(182, 110, 248);
+            font-size: large;
+            
+            color: aliceblue;
+            filter: drop-shadow(2px 2px 20px white);
+        }
+
+        .page2{
+            background-color: rgb(24, 24, 66);
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .tree{
+            height: 70vh;
+            width: 20%;
+        }
+        .tree img{
+            height: 100%;
+            width: 100%;
+            filter: drop-shadow(2px 2px 40px white);
+            animation-name: j;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes j {
+            0%{
+            filter: drop-shadow(2px 2px 30px white);
+            }
+            50%{
+                filter: drop-shadow(2px 2px 50px white);
+            }
+            100%{
+                filter: drop-shadow(2px 2px 30px white);
+            }
+        }
+
+        .page3{
+            min-height: 10vh;
+            width: 100%;
+            background-color: rgb(3, 3, 27);
+        }
+
+
+
+
+        .snowflake {
+            position: absolute;
+            top: 100vh; /* Start slightly above the visible area */
+            left: 50%; /* Center horizontally (can be adjusted) */
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            filter: drop-shadow(2px 2px 15px white);
+            border-radius: 50%; /* Make it circular */
+            animation: fall infinite 5s linear; /* Infinite falling animation */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0); /* Start at the top */
+            }
+            100% {
+                transform: translateY(100vh) translateX(10px); /* End at the bottom */
+            }
+        }
+
+
+        p{
+            font-size: 2rem;
+            color: violet;
+            margin-top: 40px;
+            font-weight: bolder;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        @media (max-width: 768px){
+
+
+            body {
+        
+                font-family: 'Poppins',sans-serif;
+                
+                height: 100%;
+                /* border: 0.2rem solid rgb(155, 156, 166); */
+                margin: 0;
+            }
+        
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+
+            .b{
+                height: 100px;
+                width: 100px;
+            }
+
+            .c{
+                height: 100px;
+                width: 100px;
+            }
+
+            .d{
+                height: 100px;
+                width: 100px;
+            }
+
+            .e{
+                height: 100px;
+                width: 100px;
+            }
+
+            .imga{
+                height: 20vh;
+                width: 65%;
+            }
+            .one{
+                min-height: 50vh;
+                margin-bottom: 20px;
+            }
+
+            .page1 h1{
+                font-size: 2.5rem;
+                font-weight: bold;
+                
+                background: linear-gradient(to right, rgb(89, 89, 228),rgb(144, 144, 230),rgb(237, 91, 203),rgb(251, 153, 153));
+                -webkit-background-clip: text;
+                background-clip: text; 
+                color: transparent;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                margin-bottom: 50px;
+            }
+
+            .tree{
+                height: 40vh;
+                width: 40%;
+            }
+
+            p{
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main">
+
+        <div class="page1">
+
+            <h1>Merry Christmas</h1>
+            <div class="one">
+
+                <img class="b" src="cele.png" alt="">
+                
+                <div class="imga">
+                    <img src="h.png" alt="">
+                </div>
+                
+                <img class="e" src="cel.png" alt="">
+            </div>
+            <button class="btn"><a href="#two"><h4>Scroll Down For Gift</h4></a></button>
+        </div>
+
+    
+
+        <div class="page2" id="two">
+            <div class="tree">
+                <img id="t" src="tree.png" alt="">
+                <div class="snowflake" style="left: 10%; animation-delay: 0s;"></div>
+                <div class="snowflake" style="left: 30%; animation-delay: 1s;"></div>
+                <div class="snowflake" style="left: 50%; animation-delay: 2s;"></div>
+                <div class="snowflake" style="left: 70%; animation-delay: 3s;"></div>
+                <div class="snowflake" style="left: 90%; animation-delay: 4s;"></div>
+                <div class="snowflake" style="left: 20%; animation-delay: 3s;"></div>
+                <div class="snowflake" style="left: 40%; animation-delay: 2s;"></div>
+                <div class="snowflake" style="left: 10%; animation-delay: 10s;"></div>
+                <div class="snowflake" style="left: 80%; animation-delay: 11s;"></div>
+                <div class="snowflake" style="left: 20%; animation-delay: 2s;"></div>
+                <div class="snowflake" style="left: 90%; animation-delay: 8s;"></div>
+                <div class="snowflake" style="left: 15%; animation-delay: 14s;"></div>
+                <div class="snowflake" style="left: 25%; animation-delay: 0s;"></div>
+                <div class="snowflake" style="left: 85%; animation-delay: 5s;"></div>
+                <div class="snowflake" style="left: 75%; animation-delay: 2s;"></div>
+                <div class="snowflake" style="left: 65%; animation-delay: 3s;"></div>
+            </div>
+
+            <p>Avi has gifted this tree to you</p>
+        </div>
+
+        <div class="page3"></div>
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        gsap.from('h1',{
+            y:50,
+            duration:1,
+            opacity:0,
+            delay : 1,
+            stagger:1,
+            
+        })
+
+        gsap.from('.imga',{
+            y:50,
+            duration:2,
+            opacity:0,
+            delay : 2,
+            stagger:1,
+            
+        })
+
+        gsap.from('.b',{
+            y:50,
+            duration:2,
+            opacity:0,
+            delay : 3,
+            stagger:1,
+            
+        })
+
+        gsap.from('.e',{
+            y:50,
+            duration:2,
+            opacity:0,
+            delay : 3,
+            stagger:1,
+            
+        })
+
+        gsap.from('#t',{
+            y:50,
+            duration:2,
+            opacity:0,
+            delay : 1,
+            stagger:1,
+            scrollTrigger : '#two #t',
+        })
+
+        gsap.from('p',{
+            y:50,
+            duration:2,
+            opacity:0,
+            delay : 2,
+            stagger:1,
+            scrollTrigger : '#two p',
+        })
+
+        gsap.from('.snowflake',{
+            y:50,
+            duration:2,
+            opacity:0,
+            delay : 2,
+            stagger:1,
+            scrollTrigger : '#two .snowflake',
+        })
+    </script>
+</body>
+</html>
