@@ -1,439 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Beautiful Movable Christmas Tree</title>
     <style>
-        * {
+        body {
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            overflow: hidden;
+            background-color: #000000;
         }
 
-        html {
-            scroll-behavior: smooth; /* Enables smooth scrolling */
-        }
-
-        html,body{
-            height: 100%;
+        #info {
+            position: absolute;
+            top: 30px;
             width: 100%;
-        }
-
-        .page1{
-            background-color: rgb(24, 24, 66);
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-        }
-
-        .one{
-            position: relative;
-          
-            min-height: 80vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-        .page1 h1{
-            font-size: 3.5rem;
+            text-align: center;
+            color: #ffddaa;
+            font-family: sans-serif;
+            pointer-events: none;
+            text-shadow: 1px 1px 5px #ffaa00;
             font-weight: bold;
-            
-            background: linear-gradient(to right, rgb(89, 89, 228),rgb(144, 144, 230),rgb(237, 91, 203),rgb(251, 153, 153));
-            -webkit-background-clip: text;
-            background-clip: text; 
-            color: transparent;
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            
-        }
-        .imga{
-            height: 40vh;
-            width: 40%;
+            z-index: 100;
         }
 
-        .imga img{
-            height: 100%;
-            width: 100%;
-            rotate: 25deg;
-            filter: drop-shadow(2px 2px 20px rgb(133, 12, 247));
-            transition: transform 0.3s ease-in-out;
-
-            animation-name: change;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
+        #info p {
+            margin: 0;
+            padding: 10px;
+            font-size: 1.2rem;
         }
-
-        @keyframes change {
-            0%{
-                filter: drop-shadow(2px 2px 20px rgb(133, 12, 247));
-                rotate: 0;
-            }
-            50%{
-                filter: drop-shadow(2px 2px 20px rgb(235, 27, 200));
-                rotate: 20deg;
-            }
-            100%{
-                filter: drop-shadow(2px 2px 20px rgb(133, 12, 247));
-                rotate: 0;
-            }
-        }
-
-        .imga img:hover{
-            transform:
-            scale(1.1);
-        }
-
-        
-
-        .b{
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 5px;
-
-            height: 200px;
-            width :200px;
-            
-        }
-        @keyframes anime {
-            0%{
-                rotate: 0deg;
-            }
-            50%{
-                rotate: 45deg;
-            }
-            100%{
-                rotate:0deg;
-            }
-        }
-
-        .c{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: 5px;
-
-            height: 200px;
-            width :200px;
-            rotate:270deg;
-          
-        }
-
-        @keyframes aanime {
-            0%{
-                rotate: 270deg;
-            }
-            50%{
-                rotate: 315deg;
-            }
-            100%{
-                rotate:270deg;
-            }
-        }
-
-        .d{
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 5px;
-
-            height: 150px;
-            width :200px
-        }
-
-        .e{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: 5px;
-
-            height: 200px;
-            width :200px;
-            
-        }
-
-
-        .btn{
-            height: 50px;
-            width: 200px;
-            border-radius: 1rem;
-            background-color: rgb(182, 110, 248);
-            font-size: large;
-            
-            color: aliceblue;
-            filter: drop-shadow(2px 2px 20px white);
-        }
-
-        .page2{
-            background-color: rgb(24, 24, 66);
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-        .tree{
-            height: 70vh;
-            width: 20%;
-        }
-        .tree img{
-            height: 100%;
-            width: 100%;
-            filter: drop-shadow(2px 2px 40px white);
-            animation-name: j;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes j {
-            0%{
-            filter: drop-shadow(2px 2px 30px white);
-            }
-            50%{
-                filter: drop-shadow(2px 2px 50px white);
-            }
-            100%{
-                filter: drop-shadow(2px 2px 30px white);
-            }
-        }
-
-        .page3{
-            min-height: 10vh;
-            width: 100%;
-            background-color: rgb(3, 3, 27);
-        }
-
-
-
-
-        .snowflake {
-            position: absolute;
-            top: 100vh; /* Start slightly above the visible area */
-            left: 50%; /* Center horizontally (can be adjusted) */
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            filter: drop-shadow(2px 2px 15px white);
-            border-radius: 50%; /* Make it circular */
-            animation: fall infinite 5s linear; /* Infinite falling animation */
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(0) translateX(0); /* Start at the top */
-            }
-            100% {
-                transform: translateY(100vh) translateX(10px); /* End at the bottom */
-            }
-        }
-
-
-        p{
-            font-size: 2rem;
-            color: violet;
-            margin-top: 40px;
-            font-weight: bolder;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-
-        @media (max-width: 768px){
-
-
-            body {
-        
-                font-family: 'Poppins',sans-serif;
-                
-                height: 100%;
-                /* border: 0.2rem solid rgb(155, 156, 166); */
-                margin: 0;
-            }
-        
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-
-            .b{
-                height: 100px;
-                width: 100px;
-            }
-
-            .c{
-                height: 100px;
-                width: 100px;
-            }
-
-            .d{
-                height: 100px;
-                width: 100px;
-            }
-
-            .e{
-                height: 100px;
-                width: 100px;
-            }
-
-            .imga{
-                height: 20vh;
-                width: 65%;
-            }
-            .one{
-                min-height: 50vh;
-                margin-bottom: 20px;
-            }
-
-            .page1 h1{
-                font-size: 2.5rem;
-                font-weight: bold;
-                
-                background: linear-gradient(to right, rgb(89, 89, 228),rgb(144, 144, 230),rgb(237, 91, 203),rgb(251, 153, 153));
-                -webkit-background-clip: text;
-                background-clip: text; 
-                color: transparent;
-                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                margin-bottom: 50px;
-            }
-
-            .tree{
-                height: 40vh;
-                width: 40%;
-            }
-
-            p{
-                font-size: 20px;
-            }
-        }
-
     </style>
 </head>
+
 <body>
-
-    <div id="main">
-
-        <div class="page1">
-
-            <h1>Merry Christmas</h1>
-            <div class="one">
-
-                <img class="b" src="cele.png" alt="">
-                
-                <div class="imga">
-                    <img src="h.png" alt="">
-                </div>
-                
-                <img class="e" src="cel.png" alt="">
-            </div>
-            <button class="btn"><a href="#two"><h4>Scroll Down For Gift</h4></a></button>
-        </div>
-
-    
-
-        <div class="page2" id="two">
-            <div class="tree">
-                <img id="t" src="tree.png" alt="">
-                <div class="snowflake" style="left: 10%; animation-delay: 0s;"></div>
-                <div class="snowflake" style="left: 30%; animation-delay: 1s;"></div>
-                <div class="snowflake" style="left: 50%; animation-delay: 2s;"></div>
-                <div class="snowflake" style="left: 70%; animation-delay: 3s;"></div>
-                <div class="snowflake" style="left: 90%; animation-delay: 4s;"></div>
-                <div class="snowflake" style="left: 20%; animation-delay: 3s;"></div>
-                <div class="snowflake" style="left: 40%; animation-delay: 2s;"></div>
-                <div class="snowflake" style="left: 10%; animation-delay: 10s;"></div>
-                <div class="snowflake" style="left: 80%; animation-delay: 11s;"></div>
-                <div class="snowflake" style="left: 20%; animation-delay: 2s;"></div>
-                <div class="snowflake" style="left: 90%; animation-delay: 8s;"></div>
-                <div class="snowflake" style="left: 15%; animation-delay: 14s;"></div>
-                <div class="snowflake" style="left: 25%; animation-delay: 0s;"></div>
-                <div class="snowflake" style="left: 85%; animation-delay: 5s;"></div>
-                <div class="snowflake" style="left: 75%; animation-delay: 2s;"></div>
-                <div class="snowflake" style="left: 65%; animation-delay: 3s;"></div>
-            </div>
-
-            <p>Avi has gifted this tree to you</p>
-        </div>
-
-        <div class="page3"></div>
+    <div id="info">
+        <p>Avi has gifted this 🎄 to YOU</p>
     </div>
-    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
 
-    <script>
-        gsap.from('h1',{
-            y:50,
-            duration:1,
-            opacity:0,
-            delay : 1,
-            stagger:1,
-            
-        })
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-        gsap.from('.imga',{
-            y:50,
-            duration:2,
-            opacity:0,
-            delay : 2,
-            stagger:1,
-            
-        })
 
-        gsap.from('.b',{
-            y:50,
-            duration:2,
-            opacity:0,
-            delay : 3,
-            stagger:1,
-            
-        })
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x000022);
 
-        gsap.from('.e',{
-            y:50,
-            duration:2,
-            opacity:0,
-            delay : 3,
-            stagger:1,
-            
-        })
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 6, 18);
 
-        gsap.from('#t',{
-            y:50,
-            duration:2,
-            opacity:0,
-            delay : 1,
-            stagger:1,
-            scrollTrigger : '#two #t',
-        })
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.toneMapping = THREE.ReinhardToneMapping;
+        document.body.appendChild(renderer.domElement);
 
-        gsap.from('p',{
-            y:50,
-            duration:2,
-            opacity:0,
-            delay : 2,
-            stagger:1,
-            scrollTrigger : '#two p',
-        })
 
-        gsap.from('.snowflake',{
-            y:50,
-            duration:2,
-            opacity:0,
-            delay : 2,
-            stagger:1,
-            scrollTrigger : '#two .snowflake',
-        })
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1;
+
+        //Lighting
+        const ambientLight = new THREE.AmbientLight(0x404080, 0.5);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xaabbff, 1.87);
+        dirLight.position.set(10, 20, 10);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 2048;
+        dirLight.shadow.mapSize.height = 2048;
+        dirLight.shadow.camera.far = 50;
+        scene.add(dirLight);
+
+        //Blom glow
+        const renderScene = new RenderPass(scene, camera);
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+        bloomPass.threshold = 0.2;
+        bloomPass.strength = 1.5;
+        bloomPass.radius = 0.8;
+
+        const composer = new EffectComposer(renderer);
+        composer.addPass(renderScene);
+        composer.addPass(bloomPass);
+
+        //Tree Generation
+        const treeGroup = new THREE.Group();
+
+
+        const trunkMat = new THREE.MeshStandardMaterial({ color: 0x3d2316, roughness: 0.9 });
+        const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.8, 2.5, 12), trunkMat);
+        trunk.position.y = 1.25;
+        trunk.castShadow = true;
+        trunk.receiveShadow = true;
+        treeGroup.add(trunk);
+
+
+        const leafMat = new THREE.MeshStandardMaterial({
+            color: 0x0a5c0a,
+            roughness: 0.6,
+            metalness: 0.1,
+            flatShading: true
+        });
+
+        const createLayer = (y, radius, height, segments) => {
+            const geo = new THREE.ConeGeometry(radius, height, segments);
+            const mesh = new THREE.Mesh(geo, leafMat);
+            mesh.position.y = y;
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            treeGroup.add(mesh);
+
+            const innerLight = new THREE.PointLight(0xffaa00, 2, 5);
+            innerLight.position.set(0, y - height / 4, 0);
+            treeGroup.add(innerLight);
+        };
+
+        createLayer(3.5, 3.5, 3.5, 16); // Bottom
+        createLayer(5.5, 2.8, 3.0, 14); // Middle
+        createLayer(7.2, 1.8, 2.5, 10); // Top
+
+        // Star
+        const starGeo = new THREE.OctahedronGeometry(0.6, 0);
+        const starMat = new THREE.MeshStandardMaterial({
+            color: 0xffd700,
+            emissive: 0xffaa00,
+            emissiveIntensity: 4.0,
+            roughness: 0.2,
+            metalness: 1.0
+        });
+        const star = new THREE.Mesh(starGeo, starMat);
+        star.position.y = 8.7;
+        treeGroup.add(star);
+
+        const starLight = new THREE.PointLight(0xffaa00, 3, 10);
+        starLight.position.set(0, 8.7, 0);
+        treeGroup.add(starLight);
+
+
+        const decorationColors = [0xff0000, 0x0055ff, 0xffcc00, 0xffffff];
+        const ornamentGeo = new THREE.SphereGeometry(0.2, 24, 24);
+
+        function addOrnaments(layerY, layerRadius, count) {
+            for (let i = 0; i < count; i++) {
+                const angle = (i / count) * Math.PI * 2 + (Math.random() * 0.5);
+                const color = decorationColors[Math.floor(Math.random() * decorationColors.length)];
+                const mat = new THREE.MeshStandardMaterial({
+                    color: color,
+                    metalness: 0.9,
+                    roughness: 0.1,
+                    emissive: color,
+                    emissiveIntensity: 0.3
+                });
+                const ornament = new THREE.Mesh(ornamentGeo, mat);
+
+                const x = Math.cos(angle) * (layerRadius - 0.3);
+                const z = Math.sin(angle) * (layerRadius - 0.3);
+                ornament.position.set(x, layerY - 0.9, z);
+                ornament.castShadow = true;
+                treeGroup.add(ornament);
+            }
+        }
+
+        addOrnaments(3.5, 3.5, 14);
+        addOrnaments(5.5, 2.8, 10);
+        addOrnaments(7.2, 1.8, 7);
+
+
+        const giftColors = [
+            0xd12e2e,
+            0x2e8bd1,
+            0xd1a32e,
+            0x2ed15a,
+            0x8b2ed1,
+            0xff007f,
+            0x00e5ff,
+            0xff8c00,
+            0x9acd32,
+            0xffffff,
+            0x4b0082,
+            0xff1493
+        ];
+
+        function createGift(x, z, size, color) {
+            const giftGroup = new THREE.Group();
+
+
+            const boxMat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.7, metalness: 0.2 });
+            const box = new THREE.Mesh(new THREE.BoxGeometry(size, size, size), boxMat);
+            box.castShadow = true; box.receiveShadow = true;
+            giftGroup.add(box);
+
+
+            const ribbonMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4, metalness: 0.6 });
+            const ribbon1 = new THREE.Mesh(new THREE.BoxGeometry(size + 0.02, size * 0.1, size + 0.02), ribbonMat);
+            const ribbon2 = new THREE.Mesh(new THREE.BoxGeometry(size * 0.1, size + 0.02, size + 0.02), ribbonMat);
+            giftGroup.add(ribbon1);
+            giftGroup.add(ribbon2);
+
+            giftGroup.position.set(x, size / 2, z);
+            giftGroup.rotation.y = Math.random();
+            return giftGroup;
+        }
+
+
+        const totalGifts = 25;
+        for (let i = 0; i < totalGifts; i++) {
+
+            const angle = (i / totalGifts) * Math.PI * 2 + (Math.random() * 0.5);
+
+            const radius = 1.2 + Math.random() * 3.0;
+            const size = 0.3 + Math.random() * 0.4;
+            const color = giftColors[i % giftColors.length];
+
+            const gift = createGift(Math.cos(angle) * radius, Math.sin(angle) * radius, size, color);
+            treeGroup.add(gift);
+        }
+
+
+
+
+        treeGroup.scale.set(0.75, 0.75, 0.75);
+        scene.add(treeGroup);
+
+
+        const planeGeo = new THREE.CircleGeometry(20, 64);
+        const planeMat = new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            roughness: 0.8,
+            metalness: 0.4
+        });
+        const plane = new THREE.Mesh(planeGeo, planeMat);
+        plane.rotation.x = -Math.PI / 2;
+        plane.receiveShadow = true;
+        scene.add(plane);
+
+
+        const snowGeo = new THREE.BufferGeometry();
+        const snowCount = 1000;
+        const posArray = new Float32Array(snowCount * 3);
+        const velArray = new Float32Array(snowCount);
+
+        for (let i = 0; i < snowCount; i++) {
+            let i3 = i * 3;
+            posArray[i3] = (Math.random() - 0.5) * 40;
+            posArray[i3 + 1] = Math.random() * 30;
+            posArray[i3 + 2] = (Math.random() - 0.5) * 40;
+            velArray[i] = Math.random() * 0.05 + 0.02;
+        }
+
+
+
+        snowGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const loader = new THREE.TextureLoader();
+        const circleTexture = loader.load('https://threejs.org/examples/textures/sprites/disc.png');
+
+        const snowMat = new THREE.PointsMaterial({
+            size: 0.2,
+            color: 0xffffff,
+            map: circleTexture, // For circular Snow
+            transparent: true,
+            opacity: 0.9,
+            alphaTest: 0.5
+        });
+        const snowMesh = new THREE.Points(snowGeo, snowMat);
+        scene.add(snowMesh);
+
+
+        function animate() {
+            requestAnimationFrame(animate);
+            star.rotation.y -= 0.03;
+            treeGroup.rotation.y += 0.002;
+
+            const positions = snowMesh.geometry.attributes.position.array;
+            for (let i = 0; i < snowCount; i++) {
+                positions[i * 3 + 1] -= velArray[i];
+                if (positions[i * 3 + 1] < 0) positions[i * 3 + 1] = 30;
+            }
+            snowMesh.geometry.attributes.position.needsUpdate = true;
+
+            controls.update();
+            composer.render();
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
+
 </html>
